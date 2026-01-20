@@ -1549,56 +1549,61 @@ function GenericToolModal({ onClose, tool }) {
             bg: "from-blue-500 to-blue-600",
             hover: "hover:shadow-lg",
             border: "border-blue-300",
+            text: "text-blue-500",
         },
         teal: {
             bg: "from-teal-500 to-teal-600",
             hover: "hover:shadow-lg",
             border: "border-teal-300",
+            text: "text-teal-500",
         },
         pink: {
             bg: "from-pink-500 to-pink-600",
             hover: "hover:shadow-lg",
             border: "border-pink-300",
+            text: "text-pink-500",
         },
         red: {
             bg: "from-red-500 to-red-600",
             hover: "hover:shadow-lg",
             border: "border-red-300",
+            text: "text-red-500",
         },
         yellow: {
             bg: "from-yellow-400 to-yellow-500",
             hover: "hover:shadow-lg",
             border: "border-yellow-300",
+            text: "text-yellow-500",
         },
         green: {
             bg: "from-green-500 to-green-600",
             hover: "hover:shadow-lg",
             border: "border-green-300",
+            text: "text-green-500",
         },
         purple: {
             bg: "from-purple-500 to-purple-600",
             hover: "hover:shadow-lg",
             border: "border-purple-300",
+            text: "text-purple-500",
         },
         indigo: {
             bg: "from-indigo-500 to-indigo-600",
             hover: "hover:shadow-lg",
             border: "border-indigo-300",
+            text: "text-indigo-500",
         },
         gray: {
             bg: "from-gray-500 to-gray-600",
             hover: "hover:shadow-lg",
             border: "border-gray-300",
-        },
-        purple: {
-            bg: "from-purple-500 to-purple-600",
-            hover: "hover:shadow-lg",
-            border: "border-purple-300",
+            text: "text-gray-500",
         },
         cyan: {
             bg: "from-cyan-500 to-cyan-600",
             hover: "hover:shadow-lg",
             border: "border-cyan-300",
+            text: "text-cyan-500",
         },
     };
 
@@ -1694,8 +1699,7 @@ ${errorMsg}
 
                                 <div className="flex justify-center mb-4">
                                     <i
-                                        className={`fas ${config.icon}
-                  text-5xl text-${config.color}-500`}
+                                        className={`fas ${config.icon} text-5xl ${buttonColorMap[config.color].text}`}
                                     ></i>
                                 </div>
 
