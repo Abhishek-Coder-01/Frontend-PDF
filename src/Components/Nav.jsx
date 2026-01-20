@@ -128,7 +128,7 @@ function App() {
                   PDF HUB
                 </span>
                 <span className="text-xs text-indigo-600 font-medium opacity-80">
-                  AI-Powered • Fast • Secure
+                 Fast • Secure • Reliable
                 </span>
               </div>
             </div>

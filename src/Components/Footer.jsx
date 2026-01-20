@@ -60,7 +60,7 @@ const Footer = () => {
 
 
                                 </h2>
-                                <p className="text-sm text-gray-400">AI-Powered • Fast • Secure</p>
+                                <p className="text-sm text-gray-400">Fast • Secure • Reliable</p>
                             </div>
                         </div>
 
@@ -115,7 +115,7 @@ const Footer = () => {
                             Quick Links
                         </h3>
                         <ul className="space-y-3">
-                            {['Home', 'Features', 'How It Works', 'About', 'Contact'].map((item, index) => (
+                            {['Home', 'Features', 'How It Works', 'Contact'].map((item, index) => (
                                 <li key={index}>
                                     <button
                                         onClick={() => scrollToSection(item.toLowerCase().replace(' ', '-'))}
@@ -136,7 +136,13 @@ const Footer = () => {
                             Resources
                         </h3>
                         <ul className="space-y-3">
-                            {['Documentation', 'API Access', 'Plant Database', 'Research Papers', 'Case Studies'].map((item, index) => (
+                           {[
+  'Image to PDF',
+  'Merge PDF',
+  'Compress PDF',
+  'Protect PDF',
+  'Unlock PDF'
+].map((item, index) => (
                                 <li key={index}>
                                     <a
                                         href="#"
@@ -181,15 +187,16 @@ const Footer = () => {
                         <div className="mt-8 grid grid-cols-3 gap-4">
                             <div className="text-center">
                                 <div className="text-2xl font-bold text-indigo-400">10K+</div>
-                                <div className="text-xs text-gray-400">Plant Species</div>
+                                <div className="text-xs text-gray-400">PDF Processed</div>
+
                             </div>
                             <div className="text-center">
-                                <div className="text-2xl font-bold text-indigo-400">95%</div>
-                                <div className="text-xs text-gray-400">Accuracy</div>
+                                <div className="text-2xl font-bold text-indigo-400">99%</div>
+                                <div className="text-xs text-gray-400">Sucess Rate</div>
                             </div>
                             <div className="text-center">
-                                <div className="text-2xl font-bold text-indigo-400">24/7</div>
-                                <div className="text-xs text-gray-400">Support</div>
+                                <div className="text-2xl font-bold text-indigo-400">Instant</div>
+                                <div className="text-xs text-gray-400">Result</div>
                             </div>
                         </div>
                     </div>
@@ -200,10 +207,11 @@ const Footer = () => {
                     <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                         <div className="text-center md:text-left">
                             <p className="text-gray-400 mb-2">
-                                PDF HUB uses advanced machine learning to identify plants with 95% accuracy
+                                PDF HUB is a modern web platform for fast, secure, and reliable PDF processing.
+
                             </p>
                             <p className="text-gray-500 text-sm">
-                                Powered by Plant.id API | © {new Date().getFullYear()}   PDF HUB. All rights reserved.
+                                Powered by PDF HUB | © {new Date().getFullYear()}   PDF HUB. All rights reserved.
                             </p>
                         </div>
 
@@ -225,7 +233,7 @@ const Footer = () => {
 
                     {/* Technology Badges */}
                     <div className="flex flex-wrap justify-center gap-4 mt-8">
-                        {['React', 'Node.js', 'API', 'AWS', 'Tailwind', 'Python'].map((tech, index) => (
+                        {['React+Vites', 'Tailwind', 'Python'].map((tech, index) => (
                             <span
                                 key={index}
                                 className="px-3 py-1 rounded-full text-xs bg-gray-800/50 text-gray-300 border border-gray-700"
