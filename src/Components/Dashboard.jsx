@@ -8,7 +8,9 @@ import PizZip from 'pizzip';
 import mammoth from 'mammoth';
 import html2canvas from 'html2canvas';
 import { VscLoading } from "react-icons/vsc";
+import { useEffect } from "react";
 import BACKEND_URL from "../api";
+
 // ========== UTILITY FUNCTIONS ==========
 
 
@@ -51,20 +53,6 @@ const convertMultipleImagesToPDF = async (files) => {
     return pdf.output('blob');
 };
 
-
-  useEffect(() => {
-    const connectBackend = async () => {
-      try {
-        const res = await fetch(`${BACKEND_URL}/`);
-        const text = await res.text();
-        console.log("Backend response:", text);
-      } catch (error) {
-        console.error("Backend not connected", error);
-      }
-    };
-
-    connectBackend();
-  }, []);
 
 // Image load helper
 const loadImage = (file) => {
@@ -121,7 +109,7 @@ const wordToPDF = async (file) => {
     const formData = new FormData();
     formData.append("file", file);
 
-    const response = await fetch("http://127.0.0.1:5000/convert", {
+    const response = await fetch(`${BACKEND_URL}convert`, {
         method: "POST",
         body: formData
     });
@@ -139,7 +127,7 @@ const pdfToWord = async (file) => {
     const formData = new FormData();
     formData.append("file", file);
 
-    const response = await fetch("http://127.0.0.1:5000/pdf-to-word", {
+    const response = await fetch(`${BACKEND_URL}pdf-to-word`, {
         method: "POST",
         body: formData
     });
@@ -160,7 +148,7 @@ const compressPDF = async (file) => {
     const formData = new FormData();
     formData.append("file", file);
 
-    const response = await fetch("http://127.0.0.1:5000/compress", {
+    const response = await fetch(`${BACKEND_URL}compress`, {
         method: "POST",
         body: formData
     });
@@ -182,7 +170,7 @@ const zipfile = async (file) => {
     formData.append("file", file);
 
 
-    const response = await fetch("http://127.0.0.1:5000/zip", {
+    const response = await fetch(`${BACKEND_URL}zip`, {
         method: "POST",
         body: formData
     });
@@ -204,7 +192,7 @@ const removePDFPages = async (file) => {
     formData.append("file", file);
 
 
-    const response = await fetch("http://127.0.0.1:5000/remove", {
+    const response = await fetch(`${BACKEND_URL}remove`, {
         method: "POST",
         body: formData
     });
@@ -224,7 +212,7 @@ const pdfTextReplace = async (file, oldText, newText) => {
     formData.append("old_text", oldText);
     formData.append("new_text", newText);
 
-    const response = await fetch("http://127.0.0.1:5000/pdf-text-replace", {
+    const response = await fetch(`${BACKEND_URL}pdf-text-replace`, {
         method: "POST",
         body: formData
     });
@@ -248,7 +236,7 @@ const pdfToImage = async (file, pages, downloadType) => {
     if (pages) formData.append("pages", pages);
     formData.append("download", downloadType);
 
-    const response = await fetch("http://127.0.0.1:5000/pdf-to-image", {
+    const response = await fetch(`${BACKEND_URL}pdf-to-image`, {
         method: "POST",
         body: formData
     });
@@ -277,7 +265,7 @@ const lockPDF = async (file, password) => {
     formData.append("file", file);
     formData.append("password", password);
 
-    const response = await fetch("http://127.0.0.1:5000/lock", {
+    const response = await fetch(`${BACKEND_URL}lock`, {
         method: "POST",
         body: formData
     });
@@ -297,7 +285,7 @@ const unlockPDF = async (file, password) => {
     formData.append("file", file);
     formData.append("password", password);
 
-    const response = await fetch("http://127.0.0.1:5000/unlock", {
+    const response = await fetch(`${BACKEND_URL}unlock`, {
         method: "POST",
         body: formData
     });
@@ -1960,7 +1948,7 @@ function PDFToImageModal({ onClose }) {
 
     const downloadSingleImage = async (url, filename) => {
         try {
-            const response = await fetch(`http://127.0.0.1:5000${url}`);
+            const response = await fetch(`${BACKEND_URL}${url.substring(1)}`);
             if (!response.ok) throw new Error('Download failed');
             const blob = await response.blob();
             const link = document.createElement('a');
@@ -2224,6 +2212,19 @@ function PDFToImageModal({ onClose }) {
 
 export default function Dashboard() {
     const [activeModal, setActiveModal] = useState(null);
+      useEffect(() => {
+    const connectBackend = async () => {
+      try {
+        const res = await fetch(`${BACKEND_URL}/`);
+        const text = await res.text();
+        console.log("Backend response:", text);
+      } catch (error) {
+        console.error("Backend not connected", error);
+      }
+    };
+
+    connectBackend();
+  }, []);
 
     const tools = [
         { id: 'image-to-pdf', name: 'Image to PDF', icon: 'fa-image', color: 'green', badge: 'Popular', modal: 'image-to-pdf', time: 2 },
