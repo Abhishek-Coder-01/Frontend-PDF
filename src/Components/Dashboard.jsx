@@ -8,7 +8,10 @@ import PizZip from 'pizzip';
 import mammoth from 'mammoth';
 import html2canvas from 'html2canvas';
 import { VscLoading } from "react-icons/vsc";
+import BACKEND_URL from "../api";
 // ========== UTILITY FUNCTIONS ==========
+
+
 
 // Multiple images ko PDF mein convert karna
 const convertMultipleImagesToPDF = async (files) => {
@@ -47,6 +50,21 @@ const convertMultipleImagesToPDF = async (files) => {
 
     return pdf.output('blob');
 };
+
+
+  useEffect(() => {
+    const connectBackend = async () => {
+      try {
+        const res = await fetch(`${BACKEND_URL}/`);
+        const text = await res.text();
+        console.log("Backend response:", text);
+      } catch (error) {
+        console.error("Backend not connected", error);
+      }
+    };
+
+    connectBackend();
+  }, []);
 
 // Image load helper
 const loadImage = (file) => {
